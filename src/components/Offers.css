@@ -1,0 +1,30 @@
+.offercontainer
+{
+    justify-content: center;
+    align-items: center;
+    width:70%;
+    margin:2% 0% 15% 15% ;
+}
+.offertop
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.arrow
+{
+    display: flex;
+    justify-content: space-between;
+    width:10%;
+    height: 30%;
+}
+.arrow a
+{
+    color: rgb(75, 75, 75);
+    font-size: large;
+    width: 30%;
+    border-radius: 60px;
+    padding: 5%;
+    background-color: rgb(194, 191, 191);
+   
+}
