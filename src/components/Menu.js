@@ -1,25 +1,28 @@
 import React, { useState, useEffect } from "react";
-import "./Offers.css";
+import "./Menu.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { CARDS_IMG_URL, BASE_URL, CORS_PROXY, TEST_URL } from "../API";
 
-const Offers = () => {
+const Menu = () => {
   const [carouselData, setCarouselData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [title,setTitle]=useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(CORS_PROXY + BASE_URL);
         const data = await response.json();
+        
+        setTitle(data.data.cards[1].card.card.header.title);
 
         if (data.data && Array.isArray(data.data.cards) && data.data.cards.length > 0) {
           // Get only the first array object's images
-          const firstCarouselData = data.data.cards[0].card.card.imageGridCards.info;
-          setCarouselData(firstCarouselData);
-          console.log("curo ",carouselData);
+          const secondCarouselData = data.data.cards[1].card.card.imageGridCards.info;
+          setCarouselData(secondCarouselData);
+          console.log("menu ",carouselData);
         } else {
           console.error("Invalid data format:", data);
         }
@@ -41,9 +44,9 @@ const Offers = () => {
   };
 
   return (
-    <div className="offercontainer">
+    <div className="secondoffercontainer">
       <div className="offertop">
-        <h2>Best offers for you</h2>
+        <h2>{title}</h2>
         <div className="arrow">
         <a
           href="#"
@@ -75,20 +78,24 @@ const Offers = () => {
           {carouselData.map((imageInfo) => {
             const imageUrl = `${CARDS_IMG_URL}${imageInfo.imageId}`;
             console.log("Image URL:", imageUrl);
-
+            console.log("texr "+imageInfo.action.text)
             return (
-              <img
-                key={imageInfo.id}
-                src={imageUrl}
-                alt={`Image ${imageInfo.id}`}
-                className="carousel-img"
-              />
-            );
-          })}
+                <div key={imageInfo.id} className="carousel-item">
+                  <img
+                    src={imageUrl}
+                    alt={`Image ${imageInfo.id}`}
+                    className="carousel-img"
+                  />
+                  <div className="image-text">{imageInfo.action.text}</div>
+                  console.log("text "+imageInfo.action.text)
+                </div>
+              );
+          } )}
+          
         </div>
       </div>
     </div>
   );
 };
 
-export default Offers;
+export default Menu;
