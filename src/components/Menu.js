@@ -13,7 +13,7 @@ const Menu = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(CORS_PROXY + BASE_URL);
+        const response = await fetch(BASE_URL);
         const data = await response.json();
         console.log("API Response:", data);
 
@@ -32,7 +32,7 @@ const Menu = () => {
       }
     };
     fetchData();
-  }, [carouselData]);
+  }, []);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);

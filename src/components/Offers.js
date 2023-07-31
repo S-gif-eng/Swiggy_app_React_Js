@@ -12,7 +12,7 @@ const Offers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(CORS_PROXY + BASE_URL);
+        const response = await fetch( BASE_URL);
         const data = await response.json();
 
         if (data.data && Array.isArray(data.data.cards) && data.data.cards.length > 0) {
@@ -30,7 +30,7 @@ const Offers = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [carouselData]);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);
