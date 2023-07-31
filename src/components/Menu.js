@@ -2,27 +2,26 @@ import React, { useState, useEffect } from "react";
 import "./Menu.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { CARDS_IMG_URL, BASE_URL, CORS_PROXY, TEST_URL } from "../API";
+import { CARDS_IMG_URL, BASE_URL, CORS_PROXY } from "../API";
 
 const Menu = () => {
   const [carouselData, setCarouselData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [title,setTitle]=useState(null);
+  const [title, setTitle] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(CORS_PROXY + BASE_URL);
         const data = await response.json();
-        
-        setTitle(data.data.cards[1].card.card.header.title);
+        console.log("API Response:", data);
 
-        if (data.data && Array.isArray(data.data.cards) && data.data.cards.length > 0) {
-          // Get only the first array object's images
-          const secondCarouselData = data.data.cards[1].card.card.imageGridCards.info;
+        if (data.data && Array.isArray(data.data.cards) && data.data.cards.length > 1) {
+          // Check if the required data structure is present
+          const secondCarouselData = data.data.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
           setCarouselData(secondCarouselData);
-          console.log("menu ",carouselData);
+          setTitle(data.data.cards[2]?.card?.card?.header?.title);
         } else {
           console.error("Invalid data format:", data);
         }
@@ -33,7 +32,7 @@ const Menu = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [carouselData]);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);
@@ -48,26 +47,26 @@ const Menu = () => {
       <div className="offertop">
         <h2>{title}</h2>
         <div className="arrow">
-        <a
-          href="#"
-          onClick={handlePrev}
-          style={{ opacity: currentIndex === 0 ? 0.5 : 1, pointerEvents: currentIndex === 0 ? "none" : "auto" }}
-        >
-          <FontAwesomeIcon icon={faArrowLeft} />
-        </a>
-        <a
-          href="#"
-          onClick={handleNext}
-          style={{
-            opacity: currentIndex === carouselData.length ? 0.5 : 1,
-            pointerEvents: currentIndex === carouselData.length ? "none" : "auto",
-          }}
-        >
-          <FontAwesomeIcon icon={faArrowRight} />
-        </a>
+          <a
+            href="#"
+            onClick={handlePrev}
+            style={{ opacity: currentIndex === 0 ? 0.5 : 1, pointerEvents: currentIndex === 0 ? "none" : "auto" }}
+          >
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </a>
+          <a
+            href="#"
+            onClick={handleNext}
+            style={{
+              opacity: currentIndex === carouselData.length - 1 ? 0.5 : 1,
+              pointerEvents: currentIndex === carouselData.length - 1 ? "none" : "auto",
+            }}
+          >
+            <FontAwesomeIcon icon={faArrowRight} />
+          </a>
+        </div>
       </div>
-      </div>
-      <div className="imagenav">
+      <div className="imagenav1">
         <div
           style={{
             display: "flex",
@@ -75,24 +74,26 @@ const Menu = () => {
             transition: "transform 0.5s ease-in-out",
           }}
         >
-          {carouselData.map((imageInfo) => {
-            const imageUrl = `${CARDS_IMG_URL}${imageInfo.imageId}`;
-            console.log("Image URL:", imageUrl);
-            console.log("texr "+imageInfo.action.text)
+          {carouselData.map((restaurant) => {
+            const imageUrl = `${CARDS_IMG_URL}${restaurant.info.cloudinaryImageId}`;
+            // console.log("Image URL:", imageUrl);
             return (
-                <div key={imageInfo.id} className="carousel-item">
-                  <img
-                    src={imageUrl}
-                    alt={`Image ${imageInfo.id}`}
-                    className="carousel-img"
-                  />
-                  <div className="image-text">{imageInfo.action.text}</div>
-                  console.log("text "+imageInfo.action.text)
-                </div>
-              );
-          } )}
-          
+              <div key={restaurant.info.id} className="carousel-item1">
+                <img
+                  src={imageUrl}
+                  alt={`Image ${restaurant.info.id}`}
+                  className="carousel-img1"
+                />
+               
+                <div className="image-text">{restaurant.info.name}</div>
+                <div className="ratingimg"><img src="./icons/rating.png" alt="" /> <div className="ratingtext">Rating: {restaurant.info.avgRating}</div></div>
+                <div className="menusitems">{restaurant.info.cuisines}</div>
+                <div className="locality">{restaurant.info.areaName}</div>
+              </div>
+            );
+          })}
         </div>
+        <hr />
       </div>
     </div>
   );

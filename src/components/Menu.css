@@ -1,66 +1,106 @@
-.secondoffercontainer
-{
-    justify-content: center;
-    align-items: center;
-    width:70%;
-    height:200px;
-    margin:2% 0% 0% 15% ;
-    
+/* Menu.css */
+.secondoffercontainer {
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  height: 200px;
+  margin: 1% 0% 0% 15%;
 }
-.offertop
-{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+.offertop {
+  display: flex;
+  align-items: center;
 }
-.arrow
-{
-    display: flex;
-    justify-content: space-between;
-    width:10%;
-    height: 30%;
+
+.arrow {
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+  height: 30%;
 }
-.arrow a
-{
-    color: rgb(75, 75, 75);
-    font-size: large;
-    width: 30%;
-    border-radius: 60px;
-    padding: 5%;
-    background-color: rgb(194, 191, 191);
-   
+
+.arrow a {
+  color: rgb(75, 75, 75);
+  font-size: large;
+  width: 30%;
+  border-radius: 60px;
+  padding: 5%;
+  background-color: rgb(194, 191, 191);
 }
-.imagenav {
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  
-  .imagenav > div {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    height: 100px;
-    border-radius: 15px;
-    width: 80%;
-   
-  }
-  
-  .carousel-item {
-    flex: 0 0 auto;
-    margin-right: 2px; /* Adjust the margin as needed */
-    transition: opacity 0.5s;
-    /* Set the initial opacity of non-active items */
-  }
-  
-  .carousel-item.active {
-  
-  }
-  
-  .carousel-img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-  .image-text
-  {
-    margin-top: 10%;
-  }
-  
+
+.imagenav1 {
+  overflow: hidden;
+  white-space: nowrap;
+  /* padding: 1%; */
+}
+
+.imagenav1 > div {
+  display: flex;
+  height: 80%;
+  border-radius: 15px;
+  width: 100%;
+}
+
+
+
+.carousel-item1 {
+  display: flex; 
+  flex-direction: column; 
+  /* justify-content: space-between;  */
+  flex: 0 0 35.50%;
+  width: 100%;
+  height: 100%;
+  margin-left: 0;
+  margin-right: 0%;
+}
+
+.carousel-img1 {
+  max-width: 70%;
+  max-height: 60%;
+  border-radius: 18px;
+  text-align: left;
+}
+
+.image-text {
+  font-weight: bold;
+  text-align: left;
+
+}
+
+.ratingimg {
+  display: flex;
+  align-items: center; 
+  margin-top: 5px; 
+}
+
+.ratingimg img {
+  width: 21px;
+  height: 18px;
+  margin-right: 5px; 
+  background-color: white;
+  border-radius: 5px;
+}
+.ratingtext
+{
+  font-weight: bold;
+}
+
+.menusitems {
+  display: block;
+  width:40%;
+  height: 10%;
+  max-height: 3.6em;
+  line-height: 1.8em;
+  text-align: left;
+  white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: gray ;
+}
+
+.locality {
+
+  text-align: left;
+  width:21px; 
+  color: rgb(88, 88, 88) ;
+}
