@@ -45,23 +45,21 @@ const Offers = () => {
       <div className="offertop">
         <h2>Best offers for you</h2>
         <div className="arrow">
-        <a
-          href="#"
+        <button
           onClick={handlePrev}
           style={{ opacity: currentIndex === 0 ? 0.5 : 1, pointerEvents: currentIndex === 0 ? "none" : "auto" }}
         >
           <FontAwesomeIcon icon={faArrowLeft} />
-        </a>
-        <a
-          href="#"
+        </button>
+        <button
           onClick={handleNext}
           style={{
-            opacity: currentIndex === carouselData.length ? 0.5 : 1,
-            pointerEvents: currentIndex === carouselData.length ? "none" : "auto",
+            opacity: currentIndex === carouselData.length - 1 ? 0.5 : 1,
+            pointerEvents: currentIndex === carouselData.length - 1 ? "none" : "auto",
           }}
         >
           <FontAwesomeIcon icon={faArrowRight} />
-        </a>
+        </button>
       </div>
       </div>
       <div className="imagenav">

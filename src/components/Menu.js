@@ -47,24 +47,22 @@ const Menu = () => {
       <div className="offertop">
         <h2>{title}</h2>
         <div className="arrow">
-          <a
-            href="#"
-            onClick={handlePrev}
-            style={{ opacity: currentIndex === 0 ? 0.5 : 1, pointerEvents: currentIndex === 0 ? "none" : "auto" }}
-          >
-            <FontAwesomeIcon icon={faArrowLeft} />
-          </a>
-          <a
-            href="#"
-            onClick={handleNext}
-            style={{
-              opacity: currentIndex === carouselData.length - 1 ? 0.5 : 1,
-              pointerEvents: currentIndex === carouselData.length - 1 ? "none" : "auto",
-            }}
-          >
-            <FontAwesomeIcon icon={faArrowRight} />
-          </a>
-        </div>
+        <button
+          onClick={handlePrev}
+          style={{ opacity: currentIndex === 0 ? 0.5 : 1, pointerEvents: currentIndex === 0 ? "none" : "auto" }}
+        >
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </button>
+        <button
+          onClick={handleNext}
+          style={{
+            opacity: currentIndex === carouselData.length - 1 ? 0.5 : 1,
+            pointerEvents: currentIndex === carouselData.length - 1 ? "none" : "auto",
+          }}
+        >
+          <FontAwesomeIcon icon={faArrowRight} />
+        </button>
+      </div>
       </div>
       <div className="imagenav1">
         <div
