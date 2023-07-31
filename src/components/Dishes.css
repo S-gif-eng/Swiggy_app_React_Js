@@ -1,0 +1,60 @@
+.offercontainer
+{
+    justify-content: center;
+    align-items: center;
+    width:75%;
+    margin:1% 0% 0% 15% ;
+}
+.offertop
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.arrow
+{
+    display: flex;
+    justify-content: space-between;
+    width:10%;
+    height: 30%;
+}
+.arrow a
+{
+    color: rgb(75, 75, 75);
+    font-size: large;
+    width: 30%;
+    border-radius: 60px;
+    padding: 5%;
+    background-color: rgb(194, 191, 191);
+   
+}
+.imagenav {
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 15px;
+  }
+  
+  .imagenav > div {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 200px;
+    border-radius: 15px;
+    width: 60%;
+   
+  }
+  
+  .carousel-item {
+    flex: 0 0 auto;
+    margin-right: 2px; /* Adjust the margin as needed */
+    transition: opacity 0.5s;
+    /* Set the initial opacity of non-active items */
+  }
+  
+  .carousel-item.active {
+  
+  }
+  
+  .carousel-img {
+    max-width: 100%; /* Make sure images fit within the container */
+    padding: 5px;
+  }

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import "./Menu.css";
+import "./Dishes.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { MENU_URL, BASE_URL, CORS_PROXY } from "../API";
+import {  BASE_URL,DISHES_URL } from "../API";
 
-const Menu = () => {
+const Dishes = () => {
   const [carouselData, setCarouselData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -13,15 +13,15 @@ const Menu = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(BASE_URL);
+        const response = await fetch( BASE_URL);
         const data = await response.json();
-        console.log("API Response:", data);
 
-        if (data.data && Array.isArray(data.data.cards) && data.data.cards.length > 1) {
-          // Check if the required data structure is present
-          const secondCarouselData = data.data.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
-          setCarouselData(secondCarouselData);
-          setTitle(data.data.cards[2]?.card?.card?.header?.title);
+        if (data.data && Array.isArray(data.data.cards) && data.data.cards.length > 0) {
+          // Get only the first array object's images
+          const firstCarouselData = data.data.cards[1].card.card.imageGridCards.info;
+          setCarouselData(firstCarouselData);
+          setTitle(data.data.cards[1]?.card?.card?.header?.title);
+          console.log("curo ",carouselData);
         } else {
           console.error("Invalid data format:", data);
         }
@@ -32,7 +32,7 @@ const Menu = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [carouselData]);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);
@@ -43,9 +43,9 @@ const Menu = () => {
   };
 
   return (
-    <div className="secondoffercontainer">
+    <div className="offercontainer">
       <div className="offertop">
-        <h2>{title}</h2>
+      <h2>{title}</h2>
         <div className="arrow">
         <button
           onClick={handlePrev}
@@ -64,7 +64,7 @@ const Menu = () => {
         </button>
       </div>
       </div>
-      <div className="imagenav1">
+      <div className="imagenav">
         <div
           style={{
             display: "flex",
@@ -72,31 +72,26 @@ const Menu = () => {
             transition: "transform 0.5s ease-in-out",
           }}
         >
-          {carouselData.map((restaurant) => {
-            const imageUrl = `${MENU_URL}${restaurant.info.cloudinaryImageId}`;
-            // console.log("Image URL:", imageUrl);
+           
+          {carouselData.map((imageInfo) => {
+            const imageUrl = `${DISHES_URL}${imageInfo.imageId}`;
+            console.log("Image URL:", imageUrl);
+
             return (
-              <div key={restaurant.info.id} className="carousel-item1">
-                <img
-                  src={imageUrl}
-                  alt={`Image ${restaurant.info.id}`}
-                  className="carousel-img1"
-                />
-               
-                <div className="image-text">{restaurant.info.name}</div>
-                <div className="ratingimg"><img src="./icons/rating.png" alt="" /> <div className="ratingtext">Rating: {restaurant.info.avgRating}</div></div>
-                <div className="menusitems">{restaurant.info.cuisines}</div>
-                <div className="locality">{restaurant.info.areaName}</div>
-              </div>
+           
+              <img
+                key={imageInfo.id}
+                src={imageUrl}
+                alt={`Image ${imageInfo.id}`}
+                className="carousel-img"
+              />
             );
           })}
         </div>
-        
+        <hr />
       </div>
-      <hr />
     </div>
-    
   );
 };
 
-export default Menu;
+export default Dishes;
