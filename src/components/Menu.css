@@ -1,44 +1,48 @@
 /* Menu.css */
-.secondoffercontainer {
+.Menucontainer {
   justify-content: center;
   align-items: center;
-  width: 70%;
-  height: 200px;
-  margin: 0% 0% 0% 15%;
+  width:90%;
+
 }
 
-.offertop {
+.Menutop {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.arrow {
+.Menuarrow{
   display: flex;
-  justify-content: space-between;
-  width: 10%;
-  height: 30%;
+    justify-content: space-between;
+    width:10%;
+    height: 30%;
 }
 
-.arrow a {
-  color: rgb(75, 75, 75);
+.Menuarrowsymbol {
+  color: rgb(3, 3, 3);
   font-size: large;
-  width: 30%;
-  border-radius: 60px;
+  width: 44%;
+  height: 40px;
+  border-radius: 50px;
   padding: 5%;
-  background-color: rgb(194, 191, 191);
+  border: none;
+  background-color: rgb(163, 162, 162); 
+  cursor: pointer;
 }
 
-.imagenav1 {
+.menunav {
   overflow: hidden;
   white-space: nowrap;
-padding-bottom: 8%;
+  padding: 1%;
 }
 
-.imagenav1 > div {
+.menunav > div {
   display: flex;
-  height: 80%;
+  height: 100%;
   border-radius: 15px;
   width: 100%;
+  padding-bottom: 12%;
 }
 
 
@@ -46,9 +50,8 @@ padding-bottom: 8%;
 .carousel-item1 {
   display: flex;
   flex-direction: column;
-  flex: 0 0 35.50%;
+  flex: 0 0 27.33%;
   width: 70%;
-  height: 70%;
   margin-left: 0%;
   margin-right: 3%;
   /* Set a fixed height for the carousel item */
@@ -62,11 +65,16 @@ padding-bottom: 8%;
   border-radius: 18px;
   text-align: left;
 }
+.menuData
+{
+ 
+}
 
-.image-text {
+.menuimage-text {
   font-weight: bold;
   text-align: left;
-
+  font-size: larger;
+  color: rgb(85, 84, 84);
 }
 
 .ratingimg {
@@ -75,34 +83,36 @@ padding-bottom: 8%;
   margin-top: 5px; 
 }
 
-.ratingimg img {
-  width: 21px;
-  height: 18px;
-  margin-right: 5px; 
-  background-color: white;
-  border-radius: 5px;
+.carousel-item1:hover .carousel-img1 {
+  transform: scale(0.9); 
+  transition: transform 0.3s ease; 
 }
 .ratingtext
 {
   font-weight: bold;
+  margin-left: 10px;
+  color: rgb(85, 84, 84);
 }
-
+.menus
+{
+  display: block;
+}
 .menusitems {
 
-  width:40%;
+  width:80%;
   height: 10%;
-  max-height: 3.6em;
-  line-height: 1.8em;
   text-align: left;
   white-space: normal;
-        overflow: hidden;
         text-overflow: ellipsis;
         color: gray ;
 }
 
 .locality {
 
+  width:80%;
+  height: 10%;
   text-align: left;
-  width:21px; 
-  color: rgb(88, 88, 88) ;
+  white-space: normal;
+        text-overflow: ellipsis;
+        color: gray ;
 }

@@ -1,0 +1,12 @@
+.Footer3
+{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    margin: 0% 0% ;
+}
+.app-images img{
+    width:200px;
+    height: 50px;
+}

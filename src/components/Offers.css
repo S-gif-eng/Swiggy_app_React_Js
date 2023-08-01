@@ -2,8 +2,8 @@
 {
     justify-content: center;
     align-items: center;
-    width:75%;
-    margin:1% 0% 0% 15% ;
+    width:90%;
+    
 }
 .offertop
 {
@@ -17,17 +17,21 @@
     justify-content: space-between;
     width:10%;
     height: 30%;
+ 
 }
-.arrow a
+.arrow_symbol
 {
-    color: rgb(75, 75, 75);
-    font-size: large;
-    width: 30%;
-    border-radius: 60px;
-    padding: 5%;
-    background-color: rgb(194, 191, 191);
-   
+  color: rgb(3, 3, 3);
+  font-size: large;
+  width: 44%;
+  height: 40px;
+  border-radius: 50px;
+  padding: 5%;
+  border: none;
+  background-color: rgb(163, 162, 162); 
+  cursor: pointer;
 }
+
 .imagenav {
     overflow: hidden;
     white-space: nowrap;
@@ -37,14 +41,14 @@
   .imagenav > div {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    height: 200px;
+    height: 280px;
     border-radius: 15px;
     width: 60%;
    
   }
   
   .carousel-item {
-    flex: 0 0 auto;
+    flex: 0 0 45%;
     margin-right: 2px; /* Adjust the margin as needed */
     transition: opacity 0.5s;
     /* Set the initial opacity of non-active items */

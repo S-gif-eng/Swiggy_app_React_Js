@@ -43,14 +43,14 @@ const Dishes = () => {
   };
 
   return (
-    <div className="offercontainer">
-      <div className="offertop">
+    <div className="Dishescontainer">
+      <div className="Dishestop">
       <h2>{title}</h2>
-        <div className="arrow">
+        <div className="Dishesarrow">
         <button
           onClick={handlePrev}
           style={{ opacity: currentIndex === 0 ? 0.5 : 1, pointerEvents: currentIndex === 0 ? "none" : "auto" }}
-        >
+          className="Dishesarrowsymbol" >
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <button
@@ -59,12 +59,12 @@ const Dishes = () => {
             opacity: currentIndex === carouselData.length - 1 ? 0.5 : 1,
             pointerEvents: currentIndex === carouselData.length - 1 ? "none" : "auto",
           }}
-        >
+          className="Dishesarrowsymbol" >
           <FontAwesomeIcon icon={faArrowRight} />
         </button>
       </div>
       </div>
-      <div className="imagenav">
+      <div className="Dishenav">
         <div
           style={{
             display: "flex",
@@ -88,7 +88,6 @@ const Dishes = () => {
             );
           })}
         </div>
-        <hr />
       </div>
     </div>
   );

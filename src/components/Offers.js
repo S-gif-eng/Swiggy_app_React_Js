@@ -8,6 +8,7 @@ const Offers = () => {
   const [carouselData, setCarouselData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [title, setTitle] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,6 +20,7 @@ const Offers = () => {
           // Get only the first array object's images
           const firstCarouselData = data.data.cards[0].card.card.imageGridCards.info;
           setCarouselData(firstCarouselData);
+          setTitle(data.data.cards[1]?.card?.card?.header?.title);
           console.log("curo ",carouselData);
         } else {
           console.error("Invalid data format:", data);
@@ -43,11 +45,12 @@ const Offers = () => {
   return (
     <div className="offercontainer">
       <div className="offertop">
-        <h2>Best offers for you</h2>
+      <h2>{title}</h2>
         <div className="arrow">
         <button
           onClick={handlePrev}
           style={{ opacity: currentIndex === 0 ? 0.5 : 1, pointerEvents: currentIndex === 0 ? "none" : "auto" }}
+          className="arrow_symbol"
         >
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
@@ -57,6 +60,7 @@ const Offers = () => {
             opacity: currentIndex === carouselData.length - 1 ? 0.5 : 1,
             pointerEvents: currentIndex === carouselData.length - 1 ? "none" : "auto",
           }}
+          className="arrow_symbol"
         >
           <FontAwesomeIcon icon={faArrowRight} />
         </button>
