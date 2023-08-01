@@ -60,14 +60,21 @@
   .restaurant-name
   {
     font-weight: bold;
-  text-align: left;
+
   font-size: larger;
   color: rgb(85, 84, 84);
+  width:80%;
+  height: 10%;
+  text-align: left;
+  white-space: normal;
+        text-overflow: ellipsis;
+        
   }
   .rating-text
   {
     text-align: left;
     font-weight: bold;
+    
   }
   .restaurant-cuisines
   {

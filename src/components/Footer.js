@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Footer.css";
 import { BASE_URL } from "../API";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const Footer = () => {
   const [carouselData, setCarouselData] = useState([]);
@@ -38,26 +40,33 @@ const Footer = () => {
 
   return (
     <div className="Footer">
+      
+      <div className="restaurant-list">
       <div className="offertop">
         <h2>{title}</h2>
       </div>
-      <div className="restaurant-list">
-        {carouselData.slice(0, showAll ? carouselData.length : 11).map((restaurant, index) => (
-          <div key={index} className="Footer-item ">
-            <a href={restaurant.link} target="_blank" rel="noopener noreferrer" className="Footer-name">
-              <div>{restaurant.text}</div>
-            </a>
-          </div>
-        ))}
-        <span className="show-more-div">
-         {!showAll && (
-            <div className="show-more-btn" onClick={handleShowMore}>
-              Show More
+        {carouselData
+          .slice(0, showAll ? carouselData.length : 11)
+          .map((restaurant, index) => (
+            <div key={index} className="Footer-item">
+              <a
+                href={restaurant.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="Footer-name"
+              >
+                <div>{restaurant.text}</div>
+              </a>
             </div>
-          )}
-          </span>
+          ))}
+        {!showAll && carouselData.length > 11 && (
+          <div key={11} className="Footer-item">
+            <div className="show-more-btn" onClick={handleShowMore}>
+              Show More  <FontAwesomeIcon icon={faChevronDown} />
+            </div>
+          </div>
+        )}
       </div>
-     
       <hr />
     </div>
   );
