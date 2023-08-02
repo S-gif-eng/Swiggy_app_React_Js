@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Footer1.css";
 import { BASE_URL } from "../API";
-import Footer2 from "./Footer2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const Footer1 = () => {
   const [carouselData, setCarouselData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [title, setTitle] = useState(null);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,22 +34,41 @@ const Footer1 = () => {
     fetchData();
   }, []);
 
+  const handleShowMore = () => {
+    setShowAll(true);
+  };
+
   return (
-    <div className="RestaurantsFood1">
+    <div className="Footer1">
+      
+      <div className="restaurant-list">
       <div className="offertop">
         <h2>{title}</h2>
       </div>
-      <div className="restaurant-list">
-        {carouselData.map((restaurant, index) => (
-          <div key={index} className="Footer-item ">
-          <a href={restaurant.link} target="_blank" rel="noopener noreferrer" className="Footer-name">
-            <div >{restaurant.text}</div>
-          </a>
-        </div>
-        ))}
+        {carouselData
+          .slice(0, showAll ? carouselData.length : 11)
+          .map((restaurant, index) => (
+            <div key={index} className="Footer1-item">
+              <a
+                href={restaurant.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="Footer1-name"
+              >
+                <div>{restaurant.text}</div>
+              </a>
+            </div>
+          ))}
+        {!showAll && carouselData.length > 11 && (
+          <div key={11} className="Footer1-item">
+            <div className="show-more-btn1" onClick={handleShowMore}>
+              Show More  <FontAwesomeIcon icon={faChevronDown} />
+            </div>
+          </div>
+        )}
       </div>
+   
     </div>
-    
   );
 };
 

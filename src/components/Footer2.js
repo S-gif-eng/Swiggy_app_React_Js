@@ -33,7 +33,7 @@ const Footer2 = () => {
   }, []);
 
   return (
-    <div className="RestaurantsFood1">
+    <div className="Footer2">
       <div className="offertop">
         <h2>{title}</h2>
       </div>
@@ -46,8 +46,6 @@ const Footer2 = () => {
         </div>
         ))}
       </div>
-      <hr />
-      
     </div>
   );
 };

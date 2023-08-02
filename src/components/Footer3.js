@@ -43,21 +43,24 @@ const Footer3 = () => {
   return (
     <div className="Footer3">
       <div className="offertop">
-        <h2>{title}</h2>
+        <h2 className="title">{title}</h2>
         <div className="app-images">
+          <div>
           {androidAppLink && (
             <a href={androidAppLink} target="_blank" rel="noopener noreferrer">
               {androidAppImage && <img src={`${CARDS_IMG_URL}${androidAppImage}`} alt="Android App" />}
             </a>
           )}
+          </div>
+          <div>
           {iosAppLink && (
             <a href={iosAppLink} target="_blank" rel="noopener noreferrer">
               {iosAppImage && <img src={`${CARDS_IMG_URL}${iosAppImage}`} alt="iOS App" />}
             </a>
           )}
+          </div>
         </div>
       </div>
-      <hr />
     </div>
   );
 };

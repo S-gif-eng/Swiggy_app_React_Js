@@ -1,10 +1,12 @@
-.RestaurantsFood1 {
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 200px;
-    margin: 0% 0% ;
-  }
+.Footer2
+{
+  justify-content: center;
+  align-items: center;
+  width:100%;
+ margin-left: 10%;
+ margin-right: 14%;
+
+}
   
   .offertop {
     display: flex;
@@ -13,29 +15,27 @@
   
   .Footer2-list {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap to the next row */
-    justify-content: flex-start; /* Change to flex-start */
+  flex-wrap: wrap; /* Allow items to wrap to the next row */
+  justify-content: flex-start; /* Change to flex-start */
   }
   
   .Footer2-item {
     display: flex;
     flex-direction: column;
     flex: 0 0 45%;
-   
-    margin-left:2%;
-    margin-right: 2%; /* Add some space between items */
+
   }
   .Footer2-name
   {
     color: rgb(63, 62, 62);
-    width:100%;
-    height:100%;
-    text-align: center;
-    padding: 3%;
-    margin: 2%;
-    font-weight: 600;
-    border-radius: 8px;
-    border: 2px solid rgb(187, 184, 184);
-    text-decoration: none;
+  width:80%;
+  height:100%;
+  text-align: center;
+  padding: 3%;
+
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1px solid rgb(206, 203, 203);
+  text-decoration: none;
   }
   

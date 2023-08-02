@@ -8,7 +8,7 @@ const Offers = () => {
   const [carouselData, setCarouselData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [title, setTitle] = useState(null);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +20,7 @@ const Offers = () => {
           // Get only the first array object's images
           const firstCarouselData = data.data.cards[0].card.card.imageGridCards.info;
           setCarouselData(firstCarouselData);
-          setTitle(data.data.cards[1]?.card?.card?.header?.title);
+          
           console.log("curo ",carouselData);
         } else {
           console.error("Invalid data format:", data);
@@ -45,7 +45,7 @@ const Offers = () => {
   return (
     <div className="offercontainer">
       <div className="offertop">
-      <h2>{title}</h2>
+      <h2>Best offers for you</h2>
         <div className="arrow">
         <button
           onClick={handlePrev}
