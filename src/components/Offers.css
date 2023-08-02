@@ -53,10 +53,10 @@
     transition: opacity 0.5s;
     /* Set the initial opacity of non-active items */
   }
-  
+/*   
   .carousel-item.active {
   
-  }
+  } */
   
   .carousel-img {
     max-width: 100%; /* Make sure images fit within the container */
