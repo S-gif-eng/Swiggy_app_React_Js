@@ -9,6 +9,7 @@ const Dishes = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [title, setTitle] = useState(null);
+  const [dishesCount,setDishesCount]=useState(0)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +21,8 @@ const Dishes = () => {
           // Get only the first array object's images
           const firstCarouselData = data.data.cards[1].card.card.imageGridCards.info;
           setCarouselData(firstCarouselData);
+          const uniqueImageIds = [...new Set(firstCarouselData.map((item) => item.imageId))];
+          setDishesCount(uniqueImageIds.length)
           setTitle(data.data.cards[1]?.card?.card?.header?.title);
           console.log("curo ",carouselData);
         } else {
@@ -35,11 +38,11 @@ const Dishes = () => {
   }, [carouselData]);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % dishesCount);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? carouselData.length - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? dishesCount - 1 : prevIndex - 1));
   };
 
   return (
@@ -56,8 +59,8 @@ const Dishes = () => {
         <button
           onClick={handleNext}
           style={{
-            opacity: currentIndex === carouselData.length - 1 ? 0.5 : 1,
-            pointerEvents: currentIndex === carouselData.length - 1 ? "none" : "auto",
+            opacity: currentIndex === dishesCount  ? 0.5 : 1,
+            pointerEvents: currentIndex ===dishesCount - 1 ? "none" : "auto",
           }}
           className="Dishesarrowsymbol" >
           <FontAwesomeIcon icon={faArrowRight} />

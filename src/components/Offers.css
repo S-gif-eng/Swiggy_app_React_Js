@@ -43,12 +43,12 @@
     transition: transform 0.5s ease-in-out;
     height: 280px;
     border-radius: 15px;
-    width: 60%;
+    width: 71%;
    
   }
   
   .carousel-item {
-    flex: 0 0 45%;
+    flex: 0 0 40%;
     margin-right: 2px; /* Adjust the margin as needed */
     transition: opacity 0.5s;
     /* Set the initial opacity of non-active items */

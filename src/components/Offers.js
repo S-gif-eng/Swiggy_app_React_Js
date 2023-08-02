@@ -8,6 +8,7 @@ const Offers = () => {
   const [carouselData, setCarouselData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [imagesCount,setImagesCount]=useState(0);
 
 
   useEffect(() => {
@@ -20,6 +21,8 @@ const Offers = () => {
           // Get only the first array object's images
           const firstCarouselData = data.data.cards[0].card.card.imageGridCards.info;
           setCarouselData(firstCarouselData);
+          const uniqueImageIds = [...new Set(firstCarouselData.map((item) => item.imageId))];
+          setImagesCount(uniqueImageIds.length)
           
           console.log("curo ",carouselData);
         } else {
@@ -35,11 +38,11 @@ const Offers = () => {
   }, [carouselData]);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % imagesCount);
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? carouselData.length - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? imagesCount - 1 : prevIndex - 1));
   };
 
   return (
@@ -57,8 +60,8 @@ const Offers = () => {
         <button
           onClick={handleNext}
           style={{
-            opacity: currentIndex === carouselData.length - 1 ? 0.5 : 1,
-            pointerEvents: currentIndex === carouselData.length - 1 ? "none" : "auto",
+            opacity: currentIndex === imagesCount - 3 ? 0.5 : 1,
+            pointerEvents: currentIndex === imagesCount - 3 ? "none" : "auto",
           }}
           className="arrow_symbol"
         >
