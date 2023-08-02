@@ -24,7 +24,7 @@ const Dishes = () => {
           const uniqueImageIds = [...new Set(firstCarouselData.map((item) => item.imageId))];
           setDishesCount(uniqueImageIds.length)
           setTitle(data.data.cards[1]?.card?.card?.header?.title);
-          console.log("curo ",carouselData);
+          // console.log("curo ",carouselData);
         } else {
           console.error("Invalid data format:", data);
         }
@@ -78,7 +78,7 @@ const Dishes = () => {
            
           {carouselData.map((imageInfo) => {
             const imageUrl = `${DISHES_URL}${imageInfo.imageId}`;
-            console.log("Image URL:", imageUrl);
+            // console.log("Image URL:", imageUrl);
 
             return (
            

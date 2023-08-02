@@ -24,7 +24,7 @@ const Offers = () => {
           const uniqueImageIds = [...new Set(firstCarouselData.map((item) => item.imageId))];
           setImagesCount(uniqueImageIds.length)
           
-          console.log("curo ",carouselData);
+          // console.log("curo ",carouselData);
         } else {
           console.error("Invalid data format:", data);
         }
@@ -79,7 +79,7 @@ const Offers = () => {
         >
           {carouselData.map((imageInfo) => {
             const imageUrl = `${CARDS_IMG_URL}${imageInfo.imageId}`;
-            console.log("Image URL:", imageUrl);
+            // console.log("Image URL:", imageUrl);
 
             return (
               <img

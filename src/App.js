@@ -10,6 +10,8 @@ import Footer from './components/Footer';
 import Footer1 from './components/Footer1';
 import Footer2 from './components/Footer2';
 import Footer3 from './components/Footer3';
+import Footer4 from './components/Footer4';
+
 
 function App() {
   return (
@@ -36,6 +38,9 @@ function App() {
  <div className="footer3">
   <Footer3 />
  </div>
+ <div className="footer4">
+ <Footer4 />
+</div>
     </div>
   );
 }
